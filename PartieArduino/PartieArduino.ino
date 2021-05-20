@@ -3,7 +3,7 @@
 #include <SoftwareSerial.h>
 
 #include <Wire.h>
-#include <rgb_lcd.h>  # Faut telecharger le fichier zip ici: https://github.com/Seeed-Studio/Grove_LCD_RGB_Backlight
+#include <rgb_lcd.h>  // Faut telecharger le fichier zip ici: https://github.com/Seeed-Studio/Grove_LCD_RGB_Backlight
 #include <math.h>
 
 rgb_lcd LCD;
