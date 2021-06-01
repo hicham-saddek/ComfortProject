@@ -23,8 +23,9 @@ float get_moisture(){
 void loop() {
   String whatDoUWant = "";
   if(Serial.available()) whatDoUWant = Serial.readString();
-  if(whatDoUWant == "Temperature") Serial.println(get_temperature());
-  if(whatDoUWant == "Sound") Serial.println(get_sound());
-  if(whatDoUWant == "Light") Serial.println(get_light());
-  if(whatDoUWant == "Moisture") Serial.println(get_moisture());
+  if(whatDoUWant != "") Serial.println(whatDoUWant);
+  if(whatDoUWant == "Temperature") {Serial.print("Temp: ");Serial.println(get_temperature());}
+  if(whatDoUWant == "Sound") {Serial.print("Sound: ");Serial.println(get_sound());}
+  if(whatDoUWant == "Light") {Serial.print("Light: ");Serial.println(get_light());}
+  if(whatDoUWant == "Moisture") {Serial.print("Moisture: ");Serial.println(get_moisture());}
 }
