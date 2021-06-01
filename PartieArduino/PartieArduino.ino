@@ -22,10 +22,10 @@ float get_moisture(){
 
 void loop() {
   String whatDoUWant = "";
-  if(Serial.available()) whatDoUWant = Serial.readString();
-  if(whatDoUWant != "") Serial.println(whatDoUWant);
-  if(whatDoUWant == "Temperature") {Serial.print("Temp: ");Serial.println(get_temperature());}
-  if(whatDoUWant == "Sound") {Serial.print("Sound: ");Serial.println(get_sound());}
-  if(whatDoUWant == "Light") {Serial.print("Light: ");Serial.println(get_light());}
-  if(whatDoUWant == "Moisture") {Serial.print("Moisture: ");Serial.println(get_moisture());}
+  while(Serial.available()){ whatDoUWant = Serial.readString();}
+  if(whatDoUWant != "") {Serial.print("Request: ");Serial.println(whatDoUWant);}
+  if(whatDoUWant == "Temperature") {Serial.print("Response: ");Serial.println(get_temperature());}
+  if(whatDoUWant == "Sound") {Serial.print("Response: ");Serial.println(get_sound());}
+  if(whatDoUWant == "Light") {Serial.print("Response: ");Serial.println(get_light());}
+  if(whatDoUWant == "Moisture") {Serial.print("Response: ");Serial.println(get_moisture());}
 }
