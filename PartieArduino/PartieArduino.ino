@@ -1,3 +1,4 @@
+#include <ArduinoJson.h>
 #include <string.h>
 
 void setup() {
@@ -21,10 +22,14 @@ float get_moisture(){
 }
 
 void loop() {
-  String whatDoUWant = "";
-  while(Serial.available()){ whatDoUWant = Serial.readString();}
-  if(whatDoUWant == "Temperature\n") {Serial.print("{\"temp\": ");Serial.print(get_temperature());Serial.print("}\n");}
-  if(whatDoUWant == "Sound\n") {Serial.print("{\"sound\": ");Serial.print(get_sound());Serial.print("}\n");}
-  if(whatDoUWant == "Light\n") {Serial.print("{\"light\": ");Serial.print(get_light());Serial.print("}\n");}
-  if(whatDoUWant == "Moisture\n") {Serial.print("{\"moisture\": ");Serial.print(get_moisture());Serial.print("}\n");}
+  StaticJsonDocument<1024> info;
+  
+  info["temperature"] = String(get_temperature());
+  info["sound"] = String(get_sound());
+  info["light"] = String(get_light());
+  info["moisture"] = String(get_moisture());
+
+  serializeJson(info, Serial);
+  Serial.println();
+  delay(100);
 }
