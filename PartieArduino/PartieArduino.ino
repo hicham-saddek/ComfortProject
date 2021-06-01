@@ -1,4 +1,4 @@
-#include <String>
+#include <string.h>
 
 void setup() {
   Serial.begin(9600);
