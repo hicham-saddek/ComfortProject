@@ -2,6 +2,7 @@
 
 void setup() {
   Serial.begin(9600);
+  Serial.println("Partie arduino - initialisation");
 }
 
 float get_temperature(){
@@ -23,9 +24,8 @@ float get_moisture(){
 void loop() {
   String whatDoUWant = "";
   while(Serial.available()){ whatDoUWant = Serial.readString();}
-  if(whatDoUWant != "") {Serial.print("Request: ");Serial.println(whatDoUWant);}
-  if(whatDoUWant == "Temperature") {Serial.print("Response: ");Serial.println(get_temperature());}
-  if(whatDoUWant == "Sound") {Serial.print("Response: ");Serial.println(get_sound());}
-  if(whatDoUWant == "Light") {Serial.print("Response: ");Serial.println(get_light());}
-  if(whatDoUWant == "Moisture") {Serial.print("Response: ");Serial.println(get_moisture());}
+  if(whatDoUWant == "Temperature\n") {Serial.print("{\"temp\": ");Serial.print(get_temperature());Serial.println("}");}
+  if(whatDoUWant == "Sound\n") {Serial.print("{\"sound\": ");Serial.print(get_sound());Serial.println("}");}
+  if(whatDoUWant == "Light\n") {Serial.print("{\"light\": ");Serial.print(get_light());Serial.println("}");}
+  if(whatDoUWant == "Moisture\n") {Serial.print("{\"moisture\": ");Serial.print(get_moisture());Serial.println("}");}
 }
